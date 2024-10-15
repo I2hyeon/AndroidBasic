@@ -4,13 +4,12 @@ plugins {
 }
 
 android {
-    namespace 'com.example.androidbasic'
+    namespace 'com.example.activity'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.example.androidbasic"
+        applicationId "com.example.activity"
         minSdk 24
-        //noinspection OldTargetApi
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -31,7 +30,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildToolsVersion '35.0.0'
+
+    // 뷰바인딩 방법 활성화
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
