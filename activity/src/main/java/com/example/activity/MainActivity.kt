@@ -3,6 +3,7 @@ package com.example.activity
 import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -27,8 +28,10 @@ class MainActivity : AppCompatActivity() {
 
     // 액티비티 콜백을 받기 위한 멤버변수
     var activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+
         Log.d(TAG, ": 콜백 실행됨 $it" )
         if (it.resultCode == Activity.RESULT_OK) {
+
             // 성공시 실행할 코드를 동작 - data를 받는게 가능함
             var callback = it.data?.getStringExtra("callback")
             Toast.makeText(this, "콜백데이터 :$callback", Toast.LENGTH_SHORT).show()
@@ -66,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         // 실습
         binding.increaseBtn.setOnClickListener {
 
-            var cnt = binding.increaseText.text.toString().toInt().plus(1)
+            cnt = binding.increaseText.text.toString().toInt().plus(1)
             binding.increaseText.text = cnt.toString()
         }
 
@@ -79,11 +82,28 @@ class MainActivity : AppCompatActivity() {
 //
 //            startActivity(intent)
 
-            // 액티비티 콜백 런처
-            val intent = Intent(this, MyIntent::class.java)
-            activityLauncher.launch(intent) // 인텐트 실행
+//            // 액티비티 콜백 런처
+//            val intent = Intent(this, MyIntent::class.java)
+//            activityLauncher.launch(intent) // 인텐트 실행
+//            // finish() // 액티비티 종료
         }
+
+        // 암시적 인텐트
+        binding.changeBtn2.setOnClickListener {
+
+            // 예시 - 연락처 앱을 실행시킬 수 있음
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("content://contacts/people") )
+//            startActivity(intent)
+
+            // 구글 지도
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo: 38.00, -35.03") )
+            startActivity(intent)
+
+        }
+
+        Log.d(TAG, "onCreate: 온크리에이트")
     }
+
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart: 액티비티 생성 후 시작")

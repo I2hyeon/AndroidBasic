@@ -15,10 +15,10 @@ class MyIntent : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // setContentView(R.layout.activity_my_intent)
         binding = ActivityMyIntentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // setContentView(R.layout.activity_my_intent)
 
         // 엑스트라 데이터 받기
 //        var data1 = intent.getStringExtra("data1")
@@ -30,7 +30,7 @@ class MyIntent : AppCompatActivity() {
         binding.returnBtn.setOnClickListener {
 
             intent.putExtra("callback", "리턴할 데이터")
-            setResult(RESULT_OK, intent)
+            setResult(RESULT_OK, intent) // 성공실패에 대한 값, 인텐트
 
             // 현재 액티비티의 종료
             finish()
