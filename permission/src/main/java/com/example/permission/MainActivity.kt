@@ -245,7 +245,7 @@ class MainActivity : AppCompatActivity() {
 
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 notifyPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-            } else { // 기기버전이 낮으면, 알림권한이 필요 없음
+            } else { // 기기버전이 낮으면, 알림 권한이 필요 없음
                 // 알림 메서드를 호출
             }
 
